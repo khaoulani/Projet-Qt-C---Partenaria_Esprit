@@ -6,7 +6,6 @@
 #include "dombase.h"
 #include "fichemobilite.h"
 #include "fichepartenariat.h"
-#include "fichepoc.h"
 #include "ficheinstitution.h"
 #include "statistiquesmobilite.h"
 #include "QtGui"
@@ -33,7 +32,6 @@ public:
 
 
 
-    void prepareTabPOC();
     void prepareTabInstitution();
     void prepareTabMobilite();
     void prepareTabWidget();
@@ -67,13 +65,9 @@ private slots:
 
     void on_checkBox_affichagePartenariatNonActif_clicked();
 
-    void on_lineEdit_recherchePOC_cursorPositionChanged(int arg1, int arg2);
 
-    void on_pushButton_actualiserPOC_clicked();
 
-    void on_tableView_POC_doubleClicked(const QModelIndex &index);
 
-    void on_pushButton_newPOC_clicked();
 
     void on_lineEdit_rechercheInstitution_cursorPositionChanged(int arg1, int arg2);
 
@@ -88,7 +82,6 @@ private:
     QItemSelectionModel* SelectionModel;
     DomPartenariat domPartenariat;
     DomMobilite domMobilite;
-    DomPoc domPoc;
     DomInstitution domInstitution;
     Ui::TabWidget *ui;
     QHeaderView* m_pHeaderView;

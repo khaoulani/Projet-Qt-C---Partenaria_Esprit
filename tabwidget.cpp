@@ -22,7 +22,6 @@ void TabWidget::prepareTabWidget(){
     this->setWindowTitle("GESTION DE PARTENARIAT ESPRIT");
     TabWidget::prepareTabMobilite();
     TabWidget::prepareTabPartenariat();
-    TabWidget::prepareTabPOC();
     TabWidget::prepareTabInstitution();
     this->PixRedIcon=QPixmap("icones/red.png");
     this->PixGreenIcon=QPixmap("icones/green.png");
@@ -66,17 +65,7 @@ void TabWidget::prepareTabInstitution()
 
 
 
-void TabWidget::prepareTabPOC()
-{
-    ui->tableView_POC->setModel(domPoc.getModelGlobal());
-    ui->tableView_POC->hideColumn(0);
-    ui->tableView_POC->hideColumn(8);
-    ui->tableView_POC->hideColumn(6);
-    ui->tableView_POC->hideColumn(5);
-    ui->tableView_POC->hideColumn(4);
-    ui->tableView_POC->resizeColumnsToContents();
-    ui->tableView_POC->horizontalHeader()->setStretchLastSection(true);
-}
+
 
 
 
@@ -223,9 +212,7 @@ void TabWidget::on_lineEdit_recherchePartenariat_cursorPositionChanged(int arg1,
     if (ui->checkBox_partenariatPays->isChecked()){
         filterChecked="PAYS";
     }
-    if (ui->checkBox_partenariatPoc->isChecked()){
-        filterChecked="POC";
-    }
+
     if (ui->checkBox_partenariatType->isChecked()){
         filterChecked="TYPE";
     }
@@ -274,49 +261,9 @@ void TabWidget::on_checkBox_affichagePartenariatNonActif_clicked()
     ui->tableView_Partenariat->setModel(domPartenariat.getModelPartenariatActif());
 }
 
-void TabWidget::on_lineEdit_recherchePOC_cursorPositionChanged(int arg1, int arg2)
-{
-    QString inputValue,filterChecked;
-    inputValue=ui->lineEdit_recherchePOC->text();
-    filterChecked="NOM";
 
-    if (ui->checkBox_pocFonction->isChecked()){
-        filterChecked="FONCTION";
-    }
-    if (ui->checkBox_pocInstitution->isChecked()){
-        filterChecked="INSTITUTION";
-    }
-    if (ui->checkBox_pocTelephone->isChecked()){
-        filterChecked="TELEPHONE";
-    }
-    if (ui->checkBox_pocFax->isChecked()){
-        filterChecked="FAX";
-    }
-    ui->tableView_POC->setModel(domPoc.getModelSpecial(inputValue,filterChecked));
-}
 
-void TabWidget::on_pushButton_actualiserPOC_clicked()
-{
-     ui->tableView_POC->setModel(domPoc.getModelGlobal());
-}
 
-void TabWidget::on_tableView_POC_doubleClicked(const QModelIndex &index)
-{
-    fichePOC *fichePoc = new fichePOC();
-    fichePoc->setIDtoDisplay(ui->tableView_POC->currentIndex().sibling(ui->tableView_POC->currentIndex().row(),0).data().toInt());
-    fichePoc->setModalCommentaires();
-    fichePoc->setFichePOC();
-    fichePoc->show();
-
-}
-
-void TabWidget::on_pushButton_newPOC_clicked()
-{
-    fichePOC *fichePoc = new fichePOC();
-    fichePoc->setAjout(true);
-    fichePoc->verifAjout();
-    fichePoc->show();
-}
 
 void TabWidget::on_lineEdit_rechercheInstitution_cursorPositionChanged(int arg1, int arg2)
 {

@@ -19,7 +19,6 @@ SOURCES += main.cpp \
         statistiquesmobilite.cpp \
         fichepartenariat.cpp \
         notificationpartenariat.cpp \
-        fichepoc.cpp \
         ficheinstitution.cpp \
         logfile.cpp
 
@@ -33,7 +32,6 @@ HEADERS  += mainwindow.h \
         statistiquesmobilite.h \
         fichepartenariat.h \
         notificationpartenariat.h \
-        fichepoc.h \
         ficheinstitution.h \
         logfile.h
 
@@ -43,5 +41,4 @@ FORMS    += mainwindow.ui \
         statistiquesmobilite.ui \
         fichepartenariat.ui \
         notificationpartenariat.ui \
-        fichepoc.ui \
         ficheinstitution.ui
